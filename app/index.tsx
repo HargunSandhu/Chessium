@@ -1,9 +1,10 @@
+import { Link, Redirect } from "expo-router";
 import { View, Text } from "react-native";
 
 const Index = () => {
   return (
     <View>
-      <Text></Text>
+      <Redirect href="/pages/Intro" />
     </View>
   );
 };
