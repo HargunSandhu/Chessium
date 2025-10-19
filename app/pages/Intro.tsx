@@ -9,8 +9,10 @@ import {
 import { Image } from "react-native";
 import { Images } from "../../assets/images/Images";
 import { Button1, Button2 } from "../../components/Buttons";
+import { useRouter } from "expo-router";
 
 export default function Intro() {
+  const router = useRouter();
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
     Inter_600SemiBold,
@@ -39,7 +41,10 @@ export default function Intro() {
         </Text>
       </View>
       <View style={styles.btnContainer}>
-        <Button1 text="Get Started" />
+        <Button1
+          text="Get Started"
+          onPress={() => router.navigate("/pages/authentication/SignIn")}
+        />
       </View>
     </SafeAreaView>
   );
