@@ -16,12 +16,34 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import { Button1, Button2 } from "@/components/Buttons";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { supabase } from "../../lib/Supabase";
 
 const SignIn = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
     Inter_400Regular,
   });
+
+  const signInHandler = async () => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    if (error) {
+      console.log("Sign in error:", error);
+    } else {
+      const user = data.user;
+      const session = data.session;
+      console.log("Signed in", user, session);
+      await router.replace("../Dashboard");
+    }
+  };
 
   return (
     <SafeAreaView style={styles.main}>
@@ -31,25 +53,37 @@ const SignIn = () => {
         placeholder="Email"
         placeholderTextColor="#757575"
         style={styles.input}
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
         placeholder="Password"
         placeholderTextColor="#757575"
         style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
       <View style={{ width: "100%", marginTop: 30 }}>
-        <Button1 text="Sign In" onPress={() => {}} />
+        <Button1 text="Sign In" onPress={signInHandler} />
       </View>
       <Button2 text="Sign In with Google" imagePath={Images.google} />
       <Button2 text="Continue as a Guest" />
-      <TouchableOpacity onPress={() => {}}>
-        <Text style={styles.text}>Forgot Password</Text>
+      <TouchableOpacity
+        onPress={() => {
+          router.navigate("/pages/authentication/ForgotPassword");
+        }}
+      >
+        <Text style={styles.text}>Forgot Password?</Text>
       </TouchableOpacity>
       <View
         style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}
       >
         <Text style={styles.text}>Don't have an account? </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            router.navigate("/pages/authentication/SignUp");
+          }}
+        >
           <Text style={styles.linkText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
@@ -62,11 +96,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#0B0E13",
     alignItems: "center",
-  },
-  logoImg: {
-    height: 150,
-    width: 300,
-    resizeMode: "contain",
   },
   heading: {
     color: "#fff",

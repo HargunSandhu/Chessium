@@ -1,3 +1,4 @@
+// import { supabase } from "@/app/lib/Supabase";
 import { Images } from "@/assets/images/Images";
 import { Button1, Button2 } from "@/components/Buttons";
 import LogoWithText from "@/components/LogoWithText";
@@ -6,6 +7,10 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
+import { SupabaseClient } from "@supabase/supabase-js";
+import { supabase } from "../../lib/Supabase";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,10 +21,33 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUp = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
     Inter_400Regular,
   });
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  const signUpHandler = async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.log("Sign up error:", error);
+      return;
+    }
+
+    const user = data?.user;
+    const session = data?.session;
+    console.log("Signed up", user, session);
+    router.navigate("/pages/authentication/SignIn");
+  };
 
   return (
     <SafeAreaView style={styles.main}>
@@ -29,14 +57,18 @@ const SignUp = () => {
         placeholder="Email"
         placeholderTextColor="#757575"
         style={styles.input}
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
         placeholder="Password"
         placeholderTextColor="#757575"
         style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
       <View style={{ width: "100%", marginTop: 30 }}>
-        <Button1 text="Sign Up" onPress={() => {}} />
+        <Button1 text="Sign Up" onPress={signUpHandler} />
       </View>
       <Button2 text="Continue with Google" imagePath={Images.google} />
       <Button2 text="Continue as a Guest" />
@@ -44,7 +76,11 @@ const SignUp = () => {
         style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}
       >
         <Text style={styles.text}>Already have an account? </Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            router.navigate("/pages/authentication/SignIn");
+          }}
+        >
           <Text style={styles.linkText}>Sign In</Text>
         </TouchableOpacity>
       </View>
@@ -57,11 +93,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#0B0E13",
     alignItems: "center",
-  },
-  logoImg: {
-    height: 150,
-    width: 300,
-    resizeMode: "contain",
   },
   heading: {
     color: "#fff",
@@ -85,10 +116,12 @@ const styles = StyleSheet.create({
   text: {
     color: "#9A9A9F",
     fontSize: 20,
+    fontFamily: "Inter_400Regular",
   },
   linkText: {
     color: "#3B82F6",
     fontSize: 20,
+    fontFamily: "Inter_400Regular",
   },
 });
 export default SignUp;
