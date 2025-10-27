@@ -25,7 +25,7 @@ const Navbar = () => {
           position: "absolute",
           backgroundColor: "#0B0F1C",
           height: 80,
-          borderTopWidth: 0,
+          borderTopWidth: 1,
           borderRadius: 40,
           borderColor: "#2563EB",
           borderWidth: 1,
@@ -44,7 +44,6 @@ const Navbar = () => {
         },
       }}
     >
-      {/* 🏠 Dashboard */}
       <Tab.Screen
         name="Dashboard"
         component={Dashboard}
@@ -61,7 +60,6 @@ const Navbar = () => {
         }}
       />
 
-      {/* 🏆 Leaderboard */}
       <Tab.Screen
         name="Leaderboard"
         component={Leaderboard}
@@ -78,7 +76,6 @@ const Navbar = () => {
         }}
       />
 
-      {/* ♞ Center Knight Button */}
       <Tab.Screen
         name="Knight"
         component={Dashboard}
@@ -101,7 +98,6 @@ const Navbar = () => {
         }}
       />
 
-      {/* 👥 Friends */}
       <Tab.Screen
         name="Friends"
         component={Friends}
@@ -117,8 +113,6 @@ const Navbar = () => {
           ),
         }}
       />
-
-      {/* ☰ Menu */}
       <Tab.Screen
         name="Menu"
         component={Menu}
@@ -146,14 +140,14 @@ const styles = StyleSheet.create({
   },
   centerButtonWrapper: {
     position: "absolute",
-    bottom: 30,
+    bottom: 25,
     alignSelf: "center",
     zIndex: 10,
   },
   centerButton: {
-    width: 75,
-    height: 75,
-    borderRadius: 40,
+    width: 85,
+    height: 85,
+    borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
     shadowColor: "#2563EB",
