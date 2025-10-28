@@ -8,4 +8,5 @@ export const Images = {
   knight:
     "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/knight.png",
   king: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/king.png",
+  rook: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/rook.png",
 };
