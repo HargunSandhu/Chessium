@@ -1,12 +1,12 @@
 import React from "react";
 import {
   View,
-  TouchableOpacity,
   GestureResponderEvent,
   Text,
   StyleSheet,
   Image,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { LinearGradient } from "expo-linear-gradient";
 import type { DimensionValue, ViewStyle } from "react-native";
@@ -16,7 +16,8 @@ type ButtonProps = {
   text?: string;
   width?: DimensionValue;
   height?: DimensionValue;
-  onPress?: (event: GestureResponderEvent) => void;
+  // onPress?: (event: GestureResponderEvent) => void;
+  onPress?: (event?: any) => void;
   justifyContent?: ViewStyle["justifyContent"];
   imagePath?: string;
   imageSize?: number;

@@ -1,11 +1,12 @@
 import { Images } from "@/assets/images/Images";
 import Header from "@/components/Header";
+import RecentMatchesSlider from "@/components/RecentMatchesSlider";
 import { Inter_500Medium, useFonts } from "@expo-google-fonts/inter";
 import { Ionicons } from "@expo/vector-icons";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
-import RecentMatchesSlider from "@/components/RecentMatchesSlider";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Dashboard = () => {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,10 @@ const Dashboard = () => {
       <Text style={styles.heading}>Play It</Text>
 
       <View style={styles.cardsRow}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          // activeOpacity={0.5} // stronger visual feedback
+          onPress={() => console.log("Pressed")}
+        >
           <View style={styles.competitiveContainer}>
             <Image source={{ uri: Images.rook }} style={styles.rook} />
             <Text style={styles.competitiveText}>

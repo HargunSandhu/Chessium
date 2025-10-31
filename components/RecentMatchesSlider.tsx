@@ -7,6 +7,36 @@ const RecentMatchesSlider = () => {
   const sheetRef = useRef<BottomSheet>(null);
 
   const snapPoints = useMemo(() => ["40%", "75%", "90%"], []);
+  const recentMatches = [
+    {
+      id: 1,
+      timeControl: "blitz",
+      opponent: "Player1",
+      opponentAvatar: "",
+      result: "Win",
+      eloAfter: 1234,
+      eloChange: +10,
+    },
+    {
+      id: 2,
+      timeControl: "bullet",
+
+      opponent: "Player2",
+      opponentAvatar: "",
+      result: "Loss",
+      eloAfter: 1220,
+      eloChange: -14,
+    },
+    {
+      id: 3,
+      timeControl: "rapid",
+      opponent: "Player3",
+      opponentAvatar: "",
+      result: "Win",
+      eloAfter: 1240,
+      eloChange: +20,
+    },
+  ];
 
   return (
     <GestureHandlerRootView style={StyleSheet.absoluteFillObject}>
@@ -20,7 +50,7 @@ const RecentMatchesSlider = () => {
         animateOnMount={true}
       >
         <BottomSheetView style={styles.contentContainer}>
-          <Text style={styles.title}>Recent Matches</Text>
+          <Text style={styles.title}>RECENT MATCHES</Text>
         </BottomSheetView>
       </BottomSheet>
     </GestureHandlerRootView>
@@ -29,7 +59,7 @@ const RecentMatchesSlider = () => {
 
 const styles = StyleSheet.create({
   sheetBackground: {
-    backgroundColor: "#10141F",
+    backgroundColor: "#141821",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
@@ -39,13 +69,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 15,
   },
   title: {
     color: "#fff",
-    fontSize: 18,
-
-    marginBottom: 10,
+    fontSize: 16,
   },
   item: {
     color: "#FFFFFF",

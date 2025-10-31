@@ -1,5 +1,7 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { Ionicons } from "@expo/vector-icons";
 import { Images } from "@/assets/images/Images";
 import { Inter_600SemiBold, useFonts } from "@expo-google-fonts/inter";

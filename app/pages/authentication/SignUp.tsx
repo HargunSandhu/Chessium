@@ -11,13 +11,9 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "../../lib/Supabase";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUp = () => {

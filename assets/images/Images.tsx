@@ -9,4 +9,10 @@ export const Images = {
     "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/knight.png",
   king: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/king.png",
   rook: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/rook.png",
+  bullet:
+    "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/bullet.png",
+  blitz:
+    "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/blitz.png",
+  rapid:
+    "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/rapid.png",
 };

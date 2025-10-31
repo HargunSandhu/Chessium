@@ -1,12 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Images } from "@/assets/images/Images";
 import LogoWithText from "@/components/LogoWithText";
 import {
