@@ -4,11 +4,13 @@ import RecentMatchesSlider from "@/components/RecentMatchesSlider";
 import { Inter_500Medium, useFonts } from "@expo-google-fonts/inter";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Dashboard = () => {
+  const router = useRouter();
   const [fontsLoaded] = useFonts({
     Inter_500Medium,
   });
@@ -47,7 +49,11 @@ const Dashboard = () => {
         </TouchableOpacity>
 
         <View style={{ gap: 5 }}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              router.navigate("/pages/aiMode/ChooseAiLevel");
+            }}
+          >
             <LinearGradient
               colors={["#3B82F6", "#2563EB", "#1E3A8A"]}
               style={[styles.gradient, { marginTop: 20 }]}

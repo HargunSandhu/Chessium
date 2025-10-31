@@ -6,7 +6,7 @@ export const Images = {
   google:
     "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/google.png",
   knight:
-    "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/knight.png",
+    "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/knight.png?download=true",
   king: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/king.png",
   rook: "https://vqludnafepubvxiylrgp.supabase.co/storage/v1/object/public/images/rook.png",
   bullet:
